@@ -2,7 +2,7 @@
 
 # Check if a filename is provided as an argument
 if [ $# -ne 1 ]; then
-    echo "Usage: $0 <filename>"
+    echo "Usage: $0 <fasta_filename>"
     exit 1
 fi
 
@@ -10,8 +10,8 @@ fi
 input_file="$1"
 
 # Output filenames
-header_lines_file="$1_metadata.sep"
-other_lines_file="$1_genetic.sep"
+header_lines_file="$1.metadata.sep"
+other_lines_file="$1.genetic.sep"
 
 # Extract lines starting with '>' into header lines file
 awk '/^>/ {print NR, $0}' "$input_file" > "$header_lines_file"

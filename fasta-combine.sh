@@ -11,7 +11,7 @@ header_lines_file="$1"
 other_lines_file="$2"
 
 # Output filename for the reconstructed FASTA file
-reconstructed_fasta_file="reconstructed.fasta"
+reconstructed_fasta_file="$1.reconstructed.fasta"
 
 # Combine header lines and other lines to reconstruct the original FASTA file
 awk 'NR==FNR{split($0, parts, " "); a[parts[1]] = substr($0, index($0, parts[2])) "\n"; next} {  print a[FNR+counter]$0; if(a[FNR+counter]) {  counter++ } }' "$header_lines_file" "$other_lines_file" > "$reconstructed_fasta_file"
