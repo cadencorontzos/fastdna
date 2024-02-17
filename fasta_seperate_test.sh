@@ -14,6 +14,8 @@ for file in "$sequences"/*; do
     	let num_files++ 
 		echo $header
 		echo "FILE: $file"
+
+		# Test seperate and combine, print results
 		header_lines_file="$file.metadata.sep"
 		other_lines_file="$file.genetic.sep"
 		./fasta-seperate.sh $file
